@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022.11.08 16:04:07.561.cpp,C:\Users\simon\Documents\Borland Studio Projects\Unit2.cpp=C:\Users\simon\Documents\Borland Studio Projects\Card.cpp</Transaction>
+    <Transaction>2022.11.08 16:04:07.561.h,C:\Users\simon\Documents\Borland Studio Projects\Unit2.h=C:\Users\simon\Documents\Borland Studio Projects\Card.h</Transaction>
+    <Transaction>2022.11.08 16:04:29.492.cpp,C:\Users\simon\Documents\Borland Studio Projects\Unit2.cpp=C:\Users\simon\Documents\Borland Studio Projects\Pack.cpp</Transaction>
+    <Transaction>2022.11.08 16:04:29.492.h,C:\Users\simon\Documents\Borland Studio Projects\Unit2.h=C:\Users\simon\Documents\Borland Studio Projects\Pack.h</Transaction>
+    <Transaction>2022.11.08 17:00:10.772.cpp,C:\Users\simon\Documents\Borland Studio Projects\Pack.cpp=D:\programming\C++\пасьянс паук\Pack.cpp</Transaction>
+    <Transaction>2022.11.08 17:00:10.772.h,C:\Users\simon\Documents\Borland Studio Projects\Pack.h=D:\programming\C++\пасьянс паук\Pack.h</Transaction>
+    <Transaction>2022.11.08 17:00:14.817.cpp,C:\Users\simon\Documents\Borland Studio Projects\Card.cpp=D:\programming\C++\пасьянс паук\Card.cpp</Transaction>
+    <Transaction>2022.11.08 17:00:14.817.h,C:\Users\simon\Documents\Borland Studio Projects\Card.h=D:\programming\C++\пасьянс паук\Card.h</Transaction>
+    <Transaction>2022.11.08 17:00:16.499.cpp,C:\Users\simon\Documents\Borland Studio Projects\Unit1.cpp=D:\programming\C++\пасьянс паук\Unit1.cpp</Transaction>
+    <Transaction>2022.11.08 17:00:16.499.h,C:\Users\simon\Documents\Borland Studio Projects\Unit1.h=D:\programming\C++\пасьянс паук\Unit1.h</Transaction>
+    <Transaction>2022.11.08 17:00:16.499.dfm,C:\Users\simon\Documents\Borland Studio Projects\Unit1.dfm=D:\programming\C++\пасьянс паук\Unit1.dfm</Transaction>
+    <Transaction>2022.11.08 17:00:17.910.bdsproj,C:\Users\simon\Documents\Borland Studio Projects\Project1.bdsproj=D:\programming\C++\пасьянс паук\Project1.bdsproj</Transaction>
+    <Transaction>2022.11.24 21:00:56.281.cpp,D:\programming\C++\пасьянс паук\Unit3.cpp=D:\programming\C++\пасьянс паук\Game.cpp</Transaction>
+    <Transaction>2022.11.24 21:00:56.281.h,D:\programming\C++\пасьянс паук\Unit3.h=D:\programming\C++\пасьянс паук\Game.h</Transaction>
+    <Transaction>2022.11.24 21:13:04.391.cpp,D:\programming\C++\пасьянс паук\Unit1.cpp=D:\programming\C++\пасьянс паук\dow.cpp</Transaction>
+    <Transaction>2022.11.24 21:13:04.391.h,D:\programming\C++\пасьянс паук\Unit1.h=D:\programming\C++\пасьянс паук\dow.h</Transaction>
+    <Transaction>2022.11.24 21:13:04.391.dfm,D:\programming\C++\пасьянс паук\Unit1.dfm=D:\programming\C++\пасьянс паук\dow.dfm</Transaction>
+    <Transaction>2022.11.24 21:13:17.235.cpp,D:\programming\C++\пасьянс паук\dow.cpp=D:\programming\C++\пасьянс паук\GameWindow.cpp</Transaction>
+    <Transaction>2022.11.24 21:13:17.235.h,D:\programming\C++\пасьянс паук\dow.h=D:\programming\C++\пасьянс паук\GameWindow.h</Transaction>
+    <Transaction>2022.11.24 21:13:17.235.dfm,D:\programming\C++\пасьянс паук\dow.dfm=D:\programming\C++\пасьянс паук\GameWindow.dfm</Transaction>
+    <Transaction>2022.11.24 21:14:00.416.cpp,D:\programming\C++\пасьянс паук\Unit2.cpp=D:\programming\C++\пасьянс паук\AboutWindow.cpp</Transaction>
+    <Transaction>2022.11.24 21:14:00.416.h,D:\programming\C++\пасьянс паук\Unit2.h=D:\programming\C++\пасьянс паук\AboutWindow.h</Transaction>
+    <Transaction>2022.11.24 21:14:00.416.dfm,D:\programming\C++\пасьянс паук\Unit2.dfm=D:\programming\C++\пасьянс паук\AboutWindow.dfm</Transaction>
+    <Transaction>2022.12.25 18:04:30.536.cpp,D:\programming\C++\пасьянс\Unit3.cpp=D:\programming\C++\пасьянс\WinWindows.cpp</Transaction>
+    <Transaction>2022.12.25 18:04:30.536.h,D:\programming\C++\пасьянс\Unit3.h=D:\programming\C++\пасьянс\WinWindows.h</Transaction>
+    <Transaction>2022.12.25 18:04:30.536.dfm,D:\programming\C++\пасьянс\Unit3.dfm=D:\programming\C++\пасьянс\WinWindows.dfm</Transaction>
+    <Transaction>2022.12.25 18:10:02.063.cpp,D:\programming\C++\пасьянс\WinWindows.cpp=D:\programming\C++\пасьянс\WinWindow.cpp</Transaction>
+    <Transaction>2022.12.25 18:10:02.063.h,D:\programming\C++\пасьянс\WinWindows.h=D:\programming\C++\пасьянс\WinWindow.h</Transaction>
+    <Transaction>2022.12.25 18:10:02.063.dfm,D:\programming\C++\пасьянс\WinWindows.dfm=D:\programming\C++\пасьянс\WinWindow.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

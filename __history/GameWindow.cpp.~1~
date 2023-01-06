@@ -1,0 +1,509 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "GameWindow.h"
+#include "AboutWindow.h"
+#include "WinWindow.h"
+#include "Card.h"
+#include "Pack.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+
+TForm1 *Form1;
+
+//---------------------------------------------------------------------------
+
+int AmountCardsInColumn(int pos){//кол-во карт в столбцах
+	int j = 0;
+	while(Columns[pos][j].Is ){
+		j++;
+	}
+	return j;
+}
+
+
+void DrawColumn(int pos){ //начальное размещение и отричовка столбцов
+	int j = 0;
+	j = AmountCardsInColumn(pos);
+	for(int k = 0; k<j; k++) {
+		if( Columns[pos][k].Avaliable) {
+			Columns[pos][k].pic->Left =  LEFT1+ pos*120;
+			Columns[pos][k].pic->Top =  TOP1+k*INVERVAL;
+			Form1->ImageList1->GetBitmap(Columns[pos][k].GetValue(),Columns[pos][k].pic->Picture->Bitmap);
+		}
+		else    {
+			Columns[pos][k].pic->Left =  LEFT1+ pos*120;;
+			Columns[pos][k].pic->Top =  TOP1 + k*INVERVAL;
+			Form1->ImageList1->GetBitmap(BACK_NUM,Columns[pos][k].pic->Picture->Bitmap);
+		}
+	}
+}
+Card GetCardByIndex(int pos, int index){//взятие карты по индексу	if( Columns[pos][index].Is ){
+		// карта найдена:
+		Columns[pos][index].Is = false;
+		Columns[pos][index].Avaliable = true;
+	}
+	return Columns[pos][index];
+}
+
+void AddCard( int pos, bool pack, Card card){//если pack = true то из колоды (тогда не важно какую карты передать)
+	if( pack && !Pack.isCard()) return; //если нет карт
+	int i;
+	for( i = 0; i < PACK_TOTAL; i++ )
+		if(!Columns[pos][i].Is ){
+			if(pack) {
+			Columns[pos][i] = Pack.GetCard();//добавляем карты в колоду из колоды pask
+			}
+			else {
+			Columns[pos][i] = card;
+			}
+		  Columns[pos][i].Is = true;
+		 return;
+	}
+}
+
+ void MoveCard(int pos1,int pos2,int index){//перемещение карты из 1 в 2 позицию
+	if(IsCard(pos1)){
+		Card card;
+		card = GetCardByIndex( pos1, index);//взять карту из pos1
+		AddCard( pos2, false, card); //добавить карту в pos2
+		Columns[pos1][AmountCardsInColumn(pos1)-1].Avaliable = true;
+		Columns[pos1][AmountCardsInColumn(pos1)].Is = false;// удалить из pos1
+		Columns[pos2][AmountCardsInColumn(pos2)-1].Avaliable = true;
+		Columns[pos2][AmountCardsInColumn(pos2)-1].Is = true;
+		//переместь добавленную карту
+		Columns[pos2][AmountCardsInColumn(pos2)-1].pic->Left = Coords[pos2][0];
+		Columns[pos2][AmountCardsInColumn(pos2)-1].pic->Top =  Coords[pos2][1]+(AmountCardsInColumn(pos2)-1)*INVERVAL;
+		if(AmountCardsInColumn(pos1)!=0) {
+			Form1->ImageList1->GetBitmap(Columns[pos1][AmountCardsInColumn(pos1)-1].GetValue(),Columns[pos1][AmountCardsInColumn(pos1)-1].pic->Picture->Bitmap);
+			Columns[pos1][AmountCardsInColumn(pos1)-1].pic->Invalidate();
+		}
+		Columns[pos2][AmountCardsInColumn(pos2)-1].pic->Invalidate();
+	}
+	return;
+}
+
+void NewGame(){
+	int i, j , p;
+	win = false;
+	Card card;
+	AmmountOfDoneColumns =0;
+	card.Init(0);
+	Pack.Shuffle();
+	// инициализировать стопки
+	for( j = 0; j < 11; j ++ )
+		for( p = 0; p < PACK_TOTAL; p ++ )
+			Columns[j][p].Is = false;
+	// 4 стопки по 6 карт:
+	for( i = 0; i < 4; i ++ )
+		for( j = 0; j < 6; j ++ ) {
+			AddCard (i, true, card);
+	}
+	for( i = 0; i < 4; i ++ )
+		Columns[i][5].Avaliable = true;
+	// 6 стопки по 5 карт:
+	for( i = 4; i < 10; i ++ )
+		for( j = 0; j < 5; j ++ )
+			AddCard (i, true, card);
+	for( i = 4; i < 10; i ++ )
+		Columns[i][4].Avaliable = true;
+	// колода:
+	for( i = 0; i < 104-54; i ++ ) {
+		AddCard (10, true, card);
+		Columns[10][i].Avaliable = false;
+	}
+	//присводить картам Image
+	int f = 0;
+	for(i =0; i<11; i++){
+		for(int j =0; j<104; j ++){
+		if(Columns[i][j].Is){
+			Columns[i][j].pic = pic[f];
+			f++;
+			}
+		}
+	}
+}
+
+bool IsCard(int pos){ //наличие карт в столбце
+	int i;
+	for( i = 0; i < PACK_TOTAL; i ++ )
+		if( Columns[pos][i].Is ) return true;
+	return false;
+}
+
+void Draw(){//отрисовка игрового поля
+	Form1->Image1->Parent->DoubleBuffered = true;
+	//стопки
+	for(int i = 0; i< 10; i++)
+		DrawColumn(i);
+	// колода:
+	int j ;
+	j = AmountCardsInColumn(10);
+	for(int k = 0; k<j; k++) {
+		Columns[10][k].pic->Left =  INV_LEFT;
+		Columns[10][k].pic->Top =  INV_TOP;
+		Form1->ImageList1->GetBitmap(BACK_NUM,Columns[10][k].pic->Picture->Bitmap);
+	}
+	for(int i = 0; i<104;i++){
+		pic[i]->Invalidate();
+		pic[i]->BringToFront();
+	}
+
+}
+	
+bool CanMoveTo(int pos, int Pos){// проверка карт на допустимость перемещения
+	if(Columns[pos][AmountCardsInColumn(pos)-1].GetValue()-Columns[Pos][indexOfFirstCardToMove].GetValue()!=1 
+	&& AmountCardsInColumn(pos)!=0 )//если карты не в порядке убывания и не пустая стопка
+		return false;
+	return true;
+}
+
+bool CardsAvaliable(int Pos){//проверка карт на доступность для игры (открытые карты)
+	for(int i = indexOfFirstCardToMove; i<indexOfLastCardToMove; i++)
+		if(!Columns[Pos][i].Avaliable)  return false;
+	int firstIndex = indexOfFirstCardToMove;
+	firstIndex++;
+	for(firstIndex; firstIndex<indexOfLastCardToMove; firstIndex++)
+		if(Columns[Pos][firstIndex-1].GetValue()-Columns[Pos][firstIndex].GetValue()!=1)
+			return false;
+	return true;
+}
+
+// возвращает индекс короля в собранной стопке(король-туз)
+int KingIndexInDoneColumn(int pos, int Pos, int first, int last){
+	int king = -1;
+	for(int i = 0; i<AmountCardsInColumn(pos); i++)
+		if(Columns[pos][i].GetValue() == KING
+		&& Columns[pos][i].Avaliable)
+			king = i;
+	int count = KING;
+	for(int j = king; j<AmountCardsInColumn(pos); j++)
+	   if(Columns[pos][j].GetValue() == count) count =  count -1;
+	if(count != -1) king = -1;
+	return king;
+}
+
+//удалить собраную стопку (король-туз) с игрового поля
+void RemoveDoneColumn(int pos, int Pos, int first, int last){
+	int firstIndex = KingIndexInDoneColumn(pos, Pos, first, last);//поиск короля
+	if(firstIndex!=-1){
+		 int k = AmountCardsInColumn(pos);
+		 for(int j =firstIndex; j<k; j++){
+			Card card;
+			card = GetCardByIndex( pos, j) ;
+			Columns[pos][j].Is = false;   //удаление карт
+			Columns[pos][j].Avaliable = false;
+			//перемещение в собранные стопки
+			Columns[pos][j].pic->Left =  DONE_LEFT+AmmountOfDoneColumns*(CARD_WIDTH+10);
+			Columns[pos][j].pic->Top =  DONE_TOP;
+			Form1->ImageList1->GetBitmap(KING,Columns[pos][j].pic->Picture->Bitmap);
+			Columns[pos][j].pic->Invalidate();
+		}
+		Columns[pos][AmountCardsInColumn(pos)-1].Avaliable = true;
+		if(IsCard(pos)){//если осталась не пустая стопка
+			Form1->ImageList1->GetBitmap(Columns[pos][AmountCardsInColumn(pos)-1].GetValue(),Columns[pos][AmountCardsInColumn(pos)-1].pic->Picture->Bitmap);
+			Columns[pos][AmountCardsInColumn(pos)-1].pic->Invalidate()  ;
+		}
+		AmmountOfDoneColumns++;//увеличение количества собраных стопок
+	}
+	return;
+}
+
+void __fastcall TForm1::N4Click(TObject *Sender)
+{
+	Form1->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::N2Click(TObject *Sender)
+{
+   Form2->Show();
+}
+//---------------------------------------------------------------------------
+
+void AddFromPack(int i){//добавить карту из колоды
+	Card card;
+	card = GetCardByIndex( 10, AmountCardsInColumn(10)-1);//взять карту колоды
+	AddCard( i, false, card); //добавить карту в стопку i
+	Columns[10][AmountCardsInColumn(10)-1].Avaliable = true;
+	Columns[10][AmountCardsInColumn(10)].Is = false;
+	Columns[i][AmountCardsInColumn(i)-1].Avaliable = true;
+	Columns[i][AmountCardsInColumn(i)-1].Is = true;
+	//перемещение добавленной карты
+	Columns[i][AmountCardsInColumn(i)-1].pic->Left = Coords[i][0];
+	Columns[i][AmountCardsInColumn(i)-1].pic->Top = Coords[i][1]+(AmountCardsInColumn(i)-1)*INVERVAL;
+	Form1->ImageList1->GetBitmap(Columns[i][AmountCardsInColumn(i)-1].GetValue(),Columns[i][AmountCardsInColumn(i)-1].pic->Picture->Bitmap);
+	Columns[i][AmountCardsInColumn(i)-1].pic->BringToFront();
+}
+
+void __fastcall TForm1::Image2MouseDown(TObject *Sender, TMouseButton Button,
+	  TShiftState Shift, int X, int Y)
+{
+   if(Button != mbLeft) return;
+	//Запомнить где
+	X0 = X;
+	Y0 = Y;
+	fMove = false;
+	bool ffind = false;
+	ffrompack = false;
+	POINT cur_pos;
+	GetCursorPos(&cur_pos);
+	p = -1;
+	Card card;
+	card.Init(0);
+	int i;
+	// определение стопки, по которой сделан щелчок
+		// щелчок по колоде
+		if( cur_pos.x > INV_LEFT && cur_pos.x < INV_LEFT+CARD_WIDTH &&
+		cur_pos.y-45 > INV_TOP && cur_pos.y-45 < INV_TOP+CARD_HEIGHT )
+		{
+		for (int i = 0 ; i < 10; i ++ )
+			if(AmountCardsInColumn(i) == 0)return;
+			int j, k;
+			if( AmountCardsInColumn(10) == 0)return;// больше нет карт в колоде
+			ffrompack = true;
+			for (j = 0 ; j < 10; j ++ ){ // добавить по одной в стопки
+				AddFromPack(j);
+			}
+			return;
+		}
+		//щелчок по стопкам
+		for(  i = 0; i < 10; i ++ )
+		  {
+			if( cur_pos.x > Coords [i][0] && cur_pos.x < Coords [i][0]+CARD_WIDTH
+			&& cur_pos.y-45 > Coords[i][1]
+			&& cur_pos.y-45 < Coords[i][1]+CARD_HEIGHT+(AmountCardsInColumn(i)-1)*INVERVAL){
+			   p = Coords[i][2];// стопка найдена
+			   ffind = true;
+				break;
+			}
+		}
+			if(!IsCard(p))return;
+				if( p != -1 && IsCard(p)){ // выбрана верхняя карта с допустимой стопки
+
+			//поиск индекса карты с которой начинать перемещение
+				if( cur_pos.x > Coords [i][0] &&
+					cur_pos.x < Coords [i][0]+CARD_WIDTH&&
+					cur_pos.y-45 > Coords[p][1]+ (AmountCardsInColumn(p)-1)*INVERVAL&&
+					cur_pos.y-45 < Coords[p][1]+ (AmountCardsInColumn(p)-1)*INVERVAL + CARD_HEIGHT){
+					 indexOfFirstCardToMove= AmountCardsInColumn(p)-1;
+					}
+				 else{
+					for(int j =0; j < AmountCardsInColumn(p)-1 ;j++) {
+						 if(cur_pos.x > Coords [p][0]
+						 && cur_pos.x < Coords [p][0]+CARD_WIDTH&&
+						 cur_pos.y-45 > Coords[p][1]+(j)*INVERVAL
+						 && cur_pos.y-45 < Coords[p][1]+INVERVAL+(j)*INVERVAL)
+							indexOfFirstCardToMove= j;
+					}
+				 }
+				indexOfLastCardToMove =  AmountCardsInColumn(p);//индекс последней карты
+			}
+		if( cur_pos.x > Coords [p][0]&&
+			cur_pos.x < Coords [p][0]+CARD_WIDTH&&
+			cur_pos.y-45 > Coords[p][1]+ INVERVAL*indexOfFirstCardToMove&&
+			cur_pos.y-45 < Coords[p][1]+ INVERVAL*(indexOfLastCardToMove-1)+CARD_HEIGHT&&
+			ffind == true&&
+			CardsAvaliable(p)){
+			//если щелчок по допустимым картам по перемещаем
+				 fMove = true;
+			}
+	if(fMove)
+	return;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Image2MouseMove(TObject *Sender, TShiftState Shift,
+	  int X, int Y)
+{
+	if(fMove){
+		int i = indexOfFirstCardToMove;
+		int count =0;
+		for(i; i<indexOfLastCardToMove; i++){//перемещение карт
+			Columns[p][i].pic->  SetBounds(
+			((TImage *)Sender)->Left + X - X0,
+			((TImage *)Sender)->Top + Y - Y0+INVERVAL*count,
+			((TImage *)Sender)->Width,
+			((TImage *)Sender)->Height);
+			Columns[p][i].pic->BringToFront();
+			count++;
+		}
+	}
+	return;
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Image2MouseUp(TObject *Sender, TMouseButton Button,
+	  TShiftState Shift, int X, int Y)
+{
+	fMove = false;
+	POINT cur_pos;
+	GetCursorPos(&cur_pos);
+	int Pos = -1;
+	for(int i = 0; i < 10; i ++ )//поиск столбца для перемещения
+		if( cur_pos.x > Coords [i][0] && cur_pos.x < Coords [i][0]+CARD_WIDTH
+		&& cur_pos.y-45 > Coords[i][1]
+		&& cur_pos.y-45 < Coords[i][1]+CARD_HEIGHT+(AmountCardsInColumn(i)-1)*INVERVAL){
+		Pos = Coords[i][2];// стопка найдена
+		break;
+	}
+	if( p != -1 && Pos !=-1 && Pos != p &&CardsAvaliable(p)&& CanMoveTo(Pos, p)){
+		int i =   indexOfFirstCardToMove;
+		// проверка на допустимость и перемещение карты
+		for(i; i<indexOfLastCardToMove; i++){
+			MoveCard(p, Pos, i);
+			}
+		//удалить собраные стопки
+		RemoveDoneColumn(Pos, p, indexOfFirstCardToMove, indexOfLastCardToMove);
+	}
+	else{//вернуть карты на первоначальную позицию
+	if(!ffrompack){//если не из колоды
+		int indx= indexOfFirstCardToMove;
+		int count = 1;
+		for(indx; indx<indexOfLastCardToMove; indx++){
+			count = Coords[p][1]+indx*INVERVAL;
+			Columns[p][indx].pic->Left= Coords[p][0];
+			Columns[p][indx].pic->Top= Coords[p][1]+indx*INVERVAL;
+			count++;
+			Columns[p][indx].pic->Invalidate();
+			}
+		}
+	 }
+	// помечаем, что снова ничего не выбрано:
+	Pos = -1 ;
+	if(AmmountOfDoneColumns == 8 && win == false) {//проверка на конец игры
+		Sleep(1000);//задержка		win = true;		Form3->Show();	}
+}
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+//заполнение вектора pic
+pic.push_back(Image1);
+pic.push_back(Image2);
+pic.push_back(Image3);
+pic.push_back(Image4);
+pic.push_back(Image5);
+pic.push_back(Image6);
+pic.push_back(Image7);
+pic.push_back(Image8);
+pic.push_back(Image9);
+pic.push_back(Image10);
+pic.push_back(Image11);
+pic.push_back(Image12);
+pic.push_back(Image13);
+pic.push_back(Image14);
+pic.push_back(Image15);
+pic.push_back(Image16);
+pic.push_back(Image17);
+pic.push_back(Image18);
+pic.push_back(Image19);
+pic.push_back(Image20);
+pic.push_back(Image21);
+pic.push_back(Image22);
+pic.push_back(Image23);
+pic.push_back(Image24);
+pic.push_back(Image25);
+pic.push_back(Image26);
+pic.push_back(Image27);
+pic.push_back(Image28);
+pic.push_back(Image29);
+pic.push_back(Image30);
+pic.push_back(Image31);
+pic.push_back(Image32);
+pic.push_back(Image33);
+pic.push_back(Image34);
+pic.push_back(Image35);
+pic.push_back(Image36);
+pic.push_back(Image37);
+pic.push_back(Image38);
+pic.push_back(Image39);
+pic.push_back(Image40);
+pic.push_back(Image41);
+pic.push_back(Image42);
+pic.push_back(Image43);
+pic.push_back(Image44);
+pic.push_back(Image45);
+pic.push_back(Image46);
+pic.push_back(Image47);
+pic.push_back(Image48);
+pic.push_back(Image49);
+pic.push_back(Image50);
+pic.push_back(Image51);
+pic.push_back(Image52);
+pic.push_back(Image53);
+pic.push_back(Image54);
+pic.push_back(Image55);
+pic.push_back(Image56);
+pic.push_back(Image57);
+pic.push_back(Image58);
+pic.push_back(Image59);
+pic.push_back(Image60);
+pic.push_back(Image61);
+pic.push_back(Image62);
+pic.push_back(Image63);
+pic.push_back(Image64);
+pic.push_back(Image65);
+pic.push_back(Image66);
+pic.push_back(Image67);
+pic.push_back(Image68);
+pic.push_back(Image69);
+pic.push_back(Image70);
+pic.push_back(Image71);
+pic.push_back(Image72);
+pic.push_back(Image73);
+pic.push_back(Image74);
+pic.push_back(Image75);
+pic.push_back(Image76);
+pic.push_back(Image77);
+pic.push_back(Image78);
+pic.push_back(Image79);
+pic.push_back(Image80);
+pic.push_back(Image81);
+pic.push_back(Image82);
+pic.push_back(Image83);
+pic.push_back(Image84);
+pic.push_back(Image85);
+pic.push_back(Image86);
+pic.push_back(Image87);
+pic.push_back(Image88);
+pic.push_back(Image89);
+pic.push_back(Image90);
+pic.push_back(Image91);
+pic.push_back(Image92);
+pic.push_back(Image93);
+pic.push_back(Image94);
+pic.push_back(Image95);
+pic.push_back(Image96);
+pic.push_back(Image97);
+pic.push_back(Image98);
+pic.push_back(Image99);
+pic.push_back(Image100);
+pic.push_back(Image101);
+pic.push_back(Image102);
+pic.push_back(Image103);
+pic.push_back(Image104);
+  for(int i = 0; i<104; i++) {
+		pic[i]->Width =  CARD_WIDTH;
+		pic[i]->Height = CARD_HEIGHT;
+	}
+	randomize();
+	NewGame();
+	Draw();
+}
+
+
+
+//---------------------------------------------------------------------------
+void __fastcall TForm1::N3Click(TObject *Sender)
+{
+	randomize();
+	NewGame();
+	Draw();
+}
+//---------------------------------------------------------------------------
+

@@ -4,7 +4,7 @@
 #pragma hdrstop
 
 #include "GameWindow.h"
-#include "AboutWindow.h"
+#include "AboutWindow.h"\
 #include "Card.h"
 #include "Pack.h"
 //---------------------------------------------------------------------------
@@ -73,15 +73,7 @@ void AddCard( int pos, bool pack, Card card){//если pack = true то из колоды (то
 		Columns[pos1][AmountCardsInColumn(pos1)].Is = false;// удалить из pos1
 		Columns[pos2][AmountCardsInColumn(pos2)-1].Avaliable = true;
 		Columns[pos2][AmountCardsInColumn(pos2)-1].Is = true;
-		//переместь добавленную карту
-		Columns[pos2][AmountCardsInColumn(pos2)-1].pic->Left = Coords[pos2][0];
-		Columns[pos2][AmountCardsInColumn(pos2)-1].pic->Top =  Coords[pos2][1]+(AmountCardsInColumn(pos2)-1)*INVERVAL;
-		if(AmountCardsInColumn(pos1)!=0) {
-			Form1->ImageList1->GetBitmap(Columns[pos1][AmountCardsInColumn(pos1)-1].GetValue(),Columns[pos1][AmountCardsInColumn(pos1)-1].pic->Picture->Bitmap);
-			Columns[pos1][AmountCardsInColumn(pos1)-1].pic->Invalidate();
-		}
-		Columns[pos2][AmountCardsInColumn(pos2)-1].pic->Invalidate();
-	}
+	} 
 	return;
 }
 

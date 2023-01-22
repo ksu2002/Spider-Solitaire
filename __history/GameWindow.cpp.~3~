@@ -4,7 +4,7 @@
 #pragma hdrstop
 
 #include "GameWindow.h"
-#include "AboutWindow.h"
+#include "AboutWindow.h"\
 #include "Card.h"
 #include "Pack.h"
 //---------------------------------------------------------------------------
@@ -20,11 +20,11 @@ int AmountCardsInColumn(int pos){//кол-во карт в столбцах
 	while(Columns[pos][j].Is ){
 		j++;
 	}
-	return k;
+	return j;
 }
 
 
-void DrawColumn(int pos){ //начальное размещение и отрисовка столбцов
+void DrawColumn(int pos){ //начальное размещение и отричовка столбцов
 	int j = 0;
 	j = AmountCardsInColumn(pos);
 	for(int k = 0; k<j; k++) {
@@ -73,15 +73,7 @@ void AddCard( int pos, bool pack, Card card){//если pack = true то из колоды (то
 		Columns[pos1][AmountCardsInColumn(pos1)].Is = false;// удалить из pos1
 		Columns[pos2][AmountCardsInColumn(pos2)-1].Avaliable = true;
 		Columns[pos2][AmountCardsInColumn(pos2)-1].Is = true;
-		//переместь добавленную карту
-		Columns[pos2][AmountCardsInColumn(pos2)-1].pic->Left = Coords[pos2][0];
-		Columns[pos2][AmountCardsInColumn(pos2)-1].pic->Top =  Coords[pos2][1]+(AmountCardsInColumn(pos2)-1)*INVERVAL;
-		if(AmountCardsInColumn(pos1)!=0) {
-			Form1->ImageList1->GetBitmap(Columns[pos1][AmountCardsInColumn(pos1)-1].GetValue(),Columns[pos1][AmountCardsInColumn(pos1)-1].pic->Picture->Bitmap);
-			Columns[pos1][AmountCardsInColumn(pos1)-1].pic->Invalidate();
-		}
-		Columns[pos2][AmountCardsInColumn(pos2)-1].pic->Invalidate();
-	}
+	} 
 	return;
 }
 
@@ -201,12 +193,8 @@ void AddFromPack(int i){//добавить карту из колоды
 	Columns[10][AmountCardsInColumn(10)].Is = false;
 	Columns[i][AmountCardsInColumn(i)-1].Avaliable = true;
 	Columns[i][AmountCardsInColumn(i)-1].Is = true;
-//перемещение добавленной карты
-	Columns[i][AmountCardsInColumn(i)-1].pic->Left = Coords[i][0];
-	Columns[i][AmountCardsInColumn(i)-1].pic->Top = Coords[i][1]+(AmountCardsInColumn(i)-1)*INVERVAL;
-	Form1->ImageList1->GetBitmap(Columns[i][AmountCardsInColumn(i)-1].GetValue(),Columns[i][AmountCardsInColumn(i)-1].pic->Picture->Bitmap);
-	Columns[i][AmountCardsInColumn(i)-1].pic->BringToFront();
-}
+	//перемещение добавленной карты
+	}
 
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)

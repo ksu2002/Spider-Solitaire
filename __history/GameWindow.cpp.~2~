@@ -19,7 +19,7 @@ int AmountCardsInColumn(int pos){//кол-во карт в столбцах
 	while(Columns[pos][j].Is ){
 		j++;
 	}
-	return k;
+	return j;
 }
 
 Card GetCardByIndex(int pos, int index){//взятие карты по индексу	if( Columns[pos][index].Is ){

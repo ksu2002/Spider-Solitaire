@@ -4,7 +4,6 @@
 #pragma hdrstop
 
 #include "GameWindow.h"
-#include "AboutWindow.h"\
 #include "Card.h"
 #include "Pack.h"
 //---------------------------------------------------------------------------
@@ -23,24 +22,7 @@ int AmountCardsInColumn(int pos){//кол-во карт в столбцах
 	return j;
 }
 
-
-void DrawColumn(int pos){ //начальное размещение и отричовка столбцов
-	int j = 0;
-	j = AmountCardsInColumn(pos);
-	for(int k = 0; k<j; k++) {
-		if( Columns[pos][k].Avaliable) {
-			Columns[pos][k].pic->Left =  LEFT1+ pos*120;
-			Columns[pos][k].pic->Top =  TOP1+k*INVERVAL;
-			Form1->ImageList1->GetBitmap(Columns[pos][k].GetValue(),Columns[pos][k].pic->Picture->Bitmap);
-		}
-		else    {
-			Columns[pos][k].pic->Left =  LEFT1+ pos*120;;
-			Columns[pos][k].pic->Top =  TOP1 + k*INVERVAL;
-			Form1->ImageList1->GetBitmap(BACK_NUM,Columns[pos][k].pic->Picture->Bitmap);
-		}
-	}
-}
-Card GetCardByIndex(int pos, int index){//взятие карты по индексу	if( Columns[pos][index].Is ){
+Card GetCardByIndex(int pos, int index){//взятие карты по индексу	if( Columns[pos][index].Is ){
 		// карта найдена:
 		Columns[pos][index].Is = false;
 		Columns[pos][index].Avaliable = true;
@@ -73,7 +55,10 @@ void AddCard( int pos, bool pack, Card card){//если pack = true то из колоды (то
 		Columns[pos1][AmountCardsInColumn(pos1)].Is = false;// удалить из pos1
 		Columns[pos2][AmountCardsInColumn(pos2)-1].Avaliable = true;
 		Columns[pos2][AmountCardsInColumn(pos2)-1].Is = true;
-	} 
+			if(AmountCardsInColumn(pos1)!=0) {
+			Columns[pos1][AmountCardsInColumn(pos1)-1].pic->Invalidate();
+		}
+	}
 	return;
 }
 
@@ -106,16 +91,6 @@ void NewGame(){
 		AddCard (10, true, card);
 		Columns[10][i].Avaliable = false;
 	}
-	//присводить картам Image
-	int f = 0;
-	for(i =0; i<11; i++){
-		for(int j =0; j<104; j ++){
-		if(Columns[i][j].Is){
-			Columns[i][j].pic = pic[f];
-			f++;
-			}
-		}
-	}
 }
 
 bool IsCard(int pos){ //наличие карт в столбце
@@ -125,28 +100,8 @@ bool IsCard(int pos){ //наличие карт в столбце
 	return false;
 }
 
-void Draw(){//отрисовка игрового поля
-	Form1->Image1->Parent->DoubleBuffered = true;
-	//стопки
-	for(int i = 0; i< 10; i++)
-		DrawColumn(i);
-	// колода:
-	int j ;
-	j = AmountCardsInColumn(10);
-	for(int k = 0; k<j; k++) {
-		Columns[10][k].pic->Left =  INV_LEFT;
-		Columns[10][k].pic->Top =  INV_TOP;
-		Form1->ImageList1->GetBitmap(BACK_NUM,Columns[10][k].pic->Picture->Bitmap);
-	}
-	for(int i = 0; i<104;i++){
-		pic[i]->Invalidate();
-		pic[i]->BringToFront();
-	}
-
-}
-	
 bool CanMoveTo(int pos, int Pos){// проверка карт на допустимость перемещения
-	if(Columns[pos][AmountCardsInColumn(pos)-1].GetValue()-Columns[Pos][indexOfFirstCardToMove].GetValue()!=1 
+	if(Columns[pos][AmountCardsInColumn(pos)-1].GetValue()-Columns[Pos][indexOfFirstCardToMove].GetValue()!=1
 	&& AmountCardsInColumn(pos)!=0 )//если карты не в порядке убывания и не пустая стопка
 		return false;
 	return true;
@@ -177,13 +132,29 @@ int KingIndexInDoneColumn(int pos, int Pos, int first, int last){
 	return king;
 }
 
+//удалить собраную стопку (король-туз) с игрового поля
+void RemoveDoneColumn(int pos, int Pos, int first, int last){
+	int firstIndex = KingIndexInDoneColumn(pos, Pos, first, last);//поиск короля
+	if(firstIndex!=-1){
+		 int k = AmountCardsInColumn(pos);
+		 for(int j =firstIndex; j<k; j++){
+			Card card;
+			card = GetCardByIndex( pos, j) ;
+			Columns[pos][j].Is = false;   //удаление карт
+			Columns[pos][j].Avaliable = false;
+		}
+		Columns[pos][AmountCardsInColumn(pos)-1].Avaliable = true;
+		AmmountOfDoneColumns++;//увеличение количества собраных стопок
+	}
+	return;
+}
+
 void __fastcall TForm1::N4Click(TObject *Sender)
 {
 	Form1->Close();
 }
 //---------------------------------------------------------------------------
 
-//---------------------------------------------------------------------------
 
 void AddFromPack(int i){//добавить карту из колоды
 	Card card;
@@ -193,10 +164,10 @@ void AddFromPack(int i){//добавить карту из колоды
 	Columns[10][AmountCardsInColumn(10)].Is = false;
 	Columns[i][AmountCardsInColumn(i)-1].Avaliable = true;
 	Columns[i][AmountCardsInColumn(i)-1].Is = true;
-	//перемещение добавленной карты
-	}
+}
 
-//---------------------------------------------------------------------------
+
+
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
@@ -305,19 +276,9 @@ pic.push_back(Image101);
 pic.push_back(Image102);
 pic.push_back(Image103);
 pic.push_back(Image104);
-  for(int i = 0; i<104; i++) {
-		pic[i]->Width =  CARD_WIDTH;
-		pic[i]->Height = CARD_HEIGHT;
-	}
-	randomize();
-	NewGame();
-	Draw();
 }
 
 
 
 //---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
-
 

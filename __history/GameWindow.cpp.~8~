@@ -208,31 +208,6 @@ void AddFromPack(int i){//добавить карту из колоды
 	Columns[i][AmountCardsInColumn(i)-1].pic->BringToFront();
 }
 
-//удалить собраную стопку (король-туз) с игрового поля
-void RemoveDoneColumn(int pos, int Pos, int first, int last){
-	int firstIndex = KingIndexInDoneColumn(pos, Pos, first, last);//поиск короля
-	if(firstIndex!=-1){
-		 int k = AmountCardsInColumn(pos);
-		 for(int j =firstIndex; j<k; j++){
-			Card card;
-			card = GetCardByIndex( pos, j) ;
-			Columns[pos][j].Is = false;   //удаление карт
-			Columns[pos][j].Avaliable = false;
-			//перемещение в собранные стопки
-			Columns[pos][j].pic->Left =  DONE_LEFT+AmmountOfDoneColumns*(CARD_WIDTH+10);
-			Columns[pos][j].pic->Top =  DONE_TOP;
-			Form1->ImageList1->GetBitmap(KING,Columns[pos][j].pic->Picture->Bitmap);
-			Columns[pos][j].pic->Invalidate();
-		}
-		Columns[pos][AmountCardsInColumn(pos)-1].Avaliable = true;
-		if(IsCard(pos)){//если осталась не пустая стопка
-			Form1->ImageList1->GetBitmap(Columns[pos][AmountCardsInColumn(pos)-1].GetValue(),Columns[pos][AmountCardsInColumn(pos)-1].pic->Picture->Bitmap);
-			Columns[pos][AmountCardsInColumn(pos)-1].pic->Invalidate()  ;
-		}
-		AmmountOfDoneColumns++;//увеличение количества собраных стопок
-	}
-	return;
-}
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
@@ -357,81 +332,4 @@ pic.push_back(Image104);
 
 //---------------------------------------------------------------------------
 
-
-void __fastcall TForm1::Image24MouseDown(TObject *Sender, TMouseButton Button,
-      TShiftState Shift, int X, int Y)
-{
-	  if(Button != mbLeft) return;
-	//Запомнить где
-	X0 = X;
-	Y0 = Y;
-	fMove = false;
-	bool ffind = false;
-	ffrompack = false;
-	POINT cur_pos;
-	GetCursorPos(&cur_pos);
-	p = -1;
-	Card card;
-	card.Init(0);
-	int i;
-	// определение стопки, по которой сделан щелчок
-		// щелчок по колоде
-		if( cur_pos.x > INV_LEFT && cur_pos.x < INV_LEFT+CARD_WIDTH &&
-		cur_pos.y-45 > INV_TOP && cur_pos.y-45 < INV_TOP+CARD_HEIGHT )
-		{
-		for (int i = 0 ; i < 10; i ++ )
-			if(AmountCardsInColumn(i) == 0)return;
-			int j, k;
-			if( AmountCardsInColumn(10) == 0)return;// больше нет карт в колоде
-			ffrompack = true;
-			for (j = 0 ; j < 10; j ++ ){ // добавить по одной в стопки
-				AddFromPack(j);
-			}
-			return;
-		}
-		//щелчок по стопкам
-		for(  i = 0; i < 10; i ++ )
-		  {
-			if( cur_pos.x > Coords [i][0] && cur_pos.x < Coords [i][0]+CARD_WIDTH
-			&& cur_pos.y-45 > Coords[i][1]
-			&& cur_pos.y-45 < Coords[i][1]+CARD_HEIGHT+(AmountCardsInColumn(i)-1)*INVERVAL){
-			   p = Coords[i][2];// стопка найдена
-			   ffind = true;
-				break;
-			}
-		}
-			if(!IsCard(p))return;
-				if( p != -1 && IsCard(p)){ // выбрана верхняя карта с допустимой стопки
-
-			//поиск индекса карты с которой начинать перемещение
-				if( cur_pos.x > Coords [i][0] &&
-					cur_pos.x < Coords [i][0]+CARD_WIDTH&&
-					cur_pos.y-45 > Coords[p][1]+ (AmountCardsInColumn(p)-1)*INVERVAL&&
-					cur_pos.y-45 < Coords[p][1]+ (AmountCardsInColumn(p)-1)*INVERVAL + CARD_HEIGHT){
-					 indexOfFirstCardToMove= AmountCardsInColumn(p)-1;
-					}
-				 else{
-					for(int j =0; j < AmountCardsInColumn(p)-1 ;j++) {
-						 if(cur_pos.x > Coords [p][0]
-						 && cur_pos.x < Coords [p][0]+CARD_WIDTH&&
-						 cur_pos.y-45 > Coords[p][1]+(j)*INVERVAL
-						 && cur_pos.y-45 < Coords[p][1]+INVERVAL+(j)*INVERVAL)
-							indexOfFirstCardToMove= j;
-					}
-				 }
-				indexOfLastCardToMove =  AmountCardsInColumn(p);//индекс последней карты
-			}
-		if( cur_pos.x > Coords [p][0]&&
-			cur_pos.x < Coords [p][0]+CARD_WIDTH&&
-			cur_pos.y-45 > Coords[p][1]+ INVERVAL*indexOfFirstCardToMove&&
-			cur_pos.y-45 < Coords[p][1]+ INVERVAL*(indexOfLastCardToMove-1)+CARD_HEIGHT&&
-			ffind == true&&
-			CardsAvaliable(p)){
-			//если щелчок по допустимым картам по перемещаем
-				 fMove = true;
-			}
-	if(fMove)
-	return;
-}
-//---------------------------------------------------------------------------
 

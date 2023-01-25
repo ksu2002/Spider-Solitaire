@@ -16350,9 +16350,6 @@ object Form1: TForm1
     Top = 256
     Width = 105
     Height = 105
-    OnMouseDown = Image24MouseDown
-    OnMouseMove = Image24MouseMove
-    OnMouseUp = Image24MouseUp
   end
   object Image25: TImage
     Left = 432

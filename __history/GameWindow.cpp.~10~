@@ -479,23 +479,3 @@ void __fastcall TForm1::Image24MouseUp(TObject *Sender, TMouseButton Button,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Image24MouseMove(TObject *Sender, TShiftState Shift,
-      int X, int Y)
-{
-if(fMove){
-		int i = indexOfFirstCardToMove;
-		int count =0;
-		for(i; i<indexOfLastCardToMove; i++){//перемещение карт
-			Columns[p][i].pic->  SetBounds(
-			((TImage *)Sender)->Left + X - X0,
-			((TImage *)Sender)->Top + Y - Y0+INVERVAL*count,
-			((TImage *)Sender)->Width,
-			((TImage *)Sender)->Height);
-			Columns[p][i].pic->BringToFront();
-			count++;
-		}
-	}
-	return;	
-}
-//---------------------------------------------------------------------------
-

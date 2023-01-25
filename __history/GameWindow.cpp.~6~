@@ -20,7 +20,11 @@ int AmountCardsInColumn(int pos){//кол-во карт в столбцах
 	while(Columns[pos][j].Is ){
 		j++;
 	}
+<<<<<<< HEAD
 	return k;
+=======
+	return j;
+>>>>>>> graphics
 }
 
 

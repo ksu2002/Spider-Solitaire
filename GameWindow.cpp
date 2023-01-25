@@ -208,6 +208,31 @@ void AddFromPack(int i){//добавить карту из колоды
 	Columns[i][AmountCardsInColumn(i)-1].pic->BringToFront();
 }
 
+//удалить собраную стопку (король-туз) с игрового поля
+void RemoveDoneColumn(int pos, int Pos, int first, int last){
+	int firstIndex = KingIndexInDoneColumn(pos, Pos, first, last);//поиск короля
+	if(firstIndex!=-1){
+		 int k = AmountCardsInColumn(pos);
+		 for(int j =firstIndex; j<k; j++){
+			Card card;
+			card = GetCardByIndex( pos, j) ;
+			Columns[pos][j].Is = false;   //удаление карт
+			Columns[pos][j].Avaliable = false;
+			//перемещение в собранные стопки
+			Columns[pos][j].pic->Left =  DONE_LEFT+AmmountOfDoneColumns*(CARD_WIDTH+10);
+			Columns[pos][j].pic->Top =  DONE_TOP;
+			Form1->ImageList1->GetBitmap(KING,Columns[pos][j].pic->Picture->Bitmap);
+			Columns[pos][j].pic->Invalidate();
+		}
+		Columns[pos][AmountCardsInColumn(pos)-1].Avaliable = true;
+		if(IsCard(pos)){//если осталась не пустая стопка
+			Form1->ImageList1->GetBitmap(Columns[pos][AmountCardsInColumn(pos)-1].GetValue(),Columns[pos][AmountCardsInColumn(pos)-1].pic->Picture->Bitmap);
+			Columns[pos][AmountCardsInColumn(pos)-1].pic->Invalidate()  ;
+		}
+		AmmountOfDoneColumns++;//увеличение количества собраных стопок
+	}
+	return;
+}
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)

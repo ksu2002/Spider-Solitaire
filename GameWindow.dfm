@@ -16212,633 +16212,943 @@ object Form1: TForm1
     Top = 224
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image2: TImage
     Left = 152
     Top = 192
     Width = 72
     Height = 97
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image3: TImage
     Left = 463
     Top = 232
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image4: TImage
     Left = 576
     Top = 232
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image5: TImage
     Left = 560
     Top = 104
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image6: TImage
     Left = 544
     Top = 40
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image7: TImage
     Left = 544
     Top = 104
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image8: TImage
     Left = 560
     Top = 104
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image9: TImage
     Left = 560
     Top = 57
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image10: TImage
     Left = 560
     Top = 104
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image11: TImage
     Left = 591
     Top = 136
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image12: TImage
     Left = 560
     Top = 57
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image13: TImage
     Left = 560
     Top = 25
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image14: TImage
     Left = 335
     Top = 57
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image15: TImage
     Left = 560
     Top = 81
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image16: TImage
     Left = 560
     Top = 40
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image17: TImage
     Left = 368
     Top = 25
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image18: TImage
     Left = 319
     Top = 25
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image19: TImage
     Left = 392
     Top = 25
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image20: TImage
     Left = 417
     Top = -24
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image21: TImage
     Left = 400
     Top = 232
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image22: TImage
     Left = 408
     Top = 240
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image23: TImage
     Left = 416
     Top = 248
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image24: TImage
     Left = 424
     Top = 256
     Width = 105
     Height = 105
-    OnMouseDown = Image24MouseDown
-    OnMouseMove = Image24MouseMove
-    OnMouseUp = Image24MouseUp
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image25: TImage
     Left = 432
     Top = 264
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image26: TImage
     Left = 440
     Top = 272
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image27: TImage
     Left = 448
     Top = 280
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image28: TImage
     Left = 456
     Top = 288
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image29: TImage
     Left = 464
     Top = 296
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image30: TImage
     Left = 472
     Top = 304
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image31: TImage
     Left = 480
     Top = 312
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image32: TImage
     Left = 488
     Top = 320
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image33: TImage
     Left = 496
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image34: TImage
     Left = 504
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image35: TImage
     Left = 512
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image36: TImage
     Left = 520
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image37: TImage
     Left = 528
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image38: TImage
     Left = 536
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image39: TImage
     Left = 544
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image40: TImage
     Left = 552
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image41: TImage
     Left = 560
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image42: TImage
     Left = 568
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image43: TImage
     Left = 576
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image44: TImage
     Left = 584
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image45: TImage
     Left = 592
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image46: TImage
     Left = 600
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image47: TImage
     Left = 608
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image48: TImage
     Left = 616
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image49: TImage
     Left = 624
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image50: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image51: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image52: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image53: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image54: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image55: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image56: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image57: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image58: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image59: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image60: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image61: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image62: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image63: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image64: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image65: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image66: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image67: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image68: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image69: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image70: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image71: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image72: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image73: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image74: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image75: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image76: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image77: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image78: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image79: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image80: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image81: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image82: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image83: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image84: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image85: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image86: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image87: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image88: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image89: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image90: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image91: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image92: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image93: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image94: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image95: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image96: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image97: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image98: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image99: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image100: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image101: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image102: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image103: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object Image104: TImage
     Left = 628
     Top = 324
     Width = 105
     Height = 105
+    OnMouseDown = Image2MouseDown
+    OnMouseMove = Image2MouseMove
+    OnMouseUp = Image2MouseUp
   end
   object MainMenu1: TMainMenu
     object N1: TMenuItem
       Caption = #1048#1075#1088#1072
       object N3: TMenuItem
         Caption = #1053#1086#1074#1072#1103' '#1080#1075#1088#1072
+        OnClick = N3Click
       end
       object N4: TMenuItem
         Caption = #1042#1099#1093#1086#1076
@@ -16847,6 +17157,7 @@ object Form1: TForm1
     end
     object N2: TMenuItem
       Caption = #1057#1087#1088#1072#1074#1082#1072
+      OnClick = N2Click
     end
   end
   object ImageList1: TImageList

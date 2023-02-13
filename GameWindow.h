@@ -191,12 +191,14 @@ __published:	// IDE-managed Components
 	TImage *Image114;
 	TImage *Image115;
 	void __fastcall N4Click(TObject *Sender);
-	void __fastcall Image24MouseDown(TObject *Sender, TMouseButton Button,
+	void __fastcall N2Click(TObject *Sender);
+	void __fastcall Image2MouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y);
-	void __fastcall Image24MouseUp(TObject *Sender, TMouseButton Button,
-          TShiftState Shift, int X, int Y);
-	void __fastcall Image24MouseMove(TObject *Sender, TShiftState Shift, int X,
+	void __fastcall Image2MouseMove(TObject *Sender, TShiftState Shift, int X,
           int Y);
+	void __fastcall Image2MouseUp(TObject *Sender, TMouseButton Button,
+          TShiftState Shift, int X, int Y);
+	void __fastcall N3Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 
